@@ -1,0 +1,58 @@
+<app-loading class="w-full h-screen absolute z-10" *ngIf="isLoading$ | async"></app-loading>
+<app-navbar class="w-full flex justify-center border-b-2 border-color-yellow-500"></app-navbar>
+<div class="w-full h-full flex justify-center font-mono tracking-wide">
+  <div class="w-4/5 pt-2">
+    <app-breadcrumb class="w-full" [breadcrumbs]="['Inicio', 'Admin']"></app-breadcrumb>
+    <div class="w-full flex flex-row pb-2">
+      <div class="w-full text-xl text-center font-bold">{{ basicInformation.name }}</div>
+    </div>
+    <div class="w-full flex flex-wrap justify-center">
+      <div class="w-60 text-center">
+        <p class="font-semibold">Moneda oficial:</p>
+        {{ basicInformation.currency }}
+      </div>
+      <div class="w-60 text-center">
+        <p class="font-semibold">Idiomas</p>
+        <p *ngFor="let language of basicInformation.languages">
+          {{ language }}
+        </p>
+      </div>
+      <div class="w-60 text-center">
+        <p class="font-semibold">Capital</p>
+        {{ basicInformation.stateCapital }}
+      </div>
+      <div class="w-60 text-center">
+        <p class="font-semibold">Paises cercanos</p>
+        <p *ngFor="let border of basicInformation.borders">
+          {{ border }}
+        </p>
+      </div>
+      <div class="w-60 text-center flex flex-col items-center">
+        <p class="font-semibold">Banderas</p>
+        <p *ngFor="let flag of basicInformation.flags">
+          <img src="{{ flag }}" alt="flag" class="w-10 h-10 p-2" />
+        </p>
+      </div>
+    </div>
+    <div class="w-full font-semibold text-xl">
+      ¿Quieres conocer un poco más?
+    </div>
+    <div class="w-full pt-10">
+      {{ basicInformation.description }}
+    </div>
+    <div class="w-full text-lg font-semibold pt-4 pb-4">
+      Tenemos una gran variedad de sitios turisticos y naturales que te encantaran selecciona uno de los siguientes
+    </div>
+    <div class="w-full flex flex-wrap justify-around pb-5">
+      <div class="w-120 flex animation-container-explore cursor-pointer" (click)="this.utils.navigateTo('admin/tourist')">
+        <img src="./assets/image_2.jpg" alt="tourist" class="animation-img-wrapper-explore w-3/4 h-96" />
+        <div class="title-animation-explore">Conoce los sitios turisticos</div>
+      </div>
+      <div class="w-120 flex animation-container-explore cursor-pointer" (click)="this.utils.navigateTo('admin/natural')">
+        <img src="./assets/image_1.jpg" alt="tourist" class="animation-img-wrapper-explore w-3/4 h-96" />
+        <div class="title-animation-explore">Conoce los sitios naturales</div>
+      </div>
+    </div>
+  </div>
+</div>
+<app-footer class="w-full flex justify-center"></app-footer>

@@ -1,0 +1,47 @@
+<div
+  class="flex flex-col w-full h-screen items-center background-primary-color"
+>
+  <app-navbar class="w-full flex justify-center"></app-navbar>
+  <div class="w-full h-full flex flex-wrap">
+    <div class="w-full lg:w-1/2 flex flex-row">
+      <div class="w-1/12 container-media-letters-sideways">
+        <p class="text-sm lg:text-lg" style="text-orientation: sideways">
+          Redes sociales
+          <a href="https://www.facebook.com/MincomercioCo/"
+            ><ng-icon class="mt-2 rotate-90 " name="bootstrapFacebook"></ng-icon
+          ></a>
+          <a href="https://www.instagram.com/mincomercioco/"
+            ><ng-icon class="mt-2 rotate-90" name="bootstrapInstagram"></ng-icon
+          ></a>
+          <a href="https://x.com/MincomercioCo"
+            ><ng-icon class="mt-2 rotate-90" name="bootstrapX"></ng-icon
+          ></a>
+        </p>
+      </div>
+      <div
+        class="w-11/12 flex flex-col justify-center pl-12 pr-12 cursor-default"
+      >
+        <p class="text-2xl lg:text-4xl font-mono tracking-wide font-bold">
+          ¿Estás listo para una aventura inolvidable?
+        </p>
+        <p class="text-lg lg:text-xl font-mono tracking-wide font-medium">
+          Colombia te espera con los brazos abiertos. Registrate y tendrás
+          acceso cada rincón de nuestro bellísimo país.
+        </p>
+        <div
+          (click)="this.utils.navigateTo('/login')"
+          class="text-sm mt-2 p-3 border-2 border-color-button-primary font-mono tracking-wide text-slate-950 rounded-md w-fit cursor-pointer lg:p-5 lg:text-lg"
+        >
+          Registrarse
+        </div>
+      </div>
+    </div>
+    <div class="w-full h-auto flex justify-center lg:w-1/2 lg:h-full">
+      <img
+        src="./assets/ilustration_1.png"
+        alt="icon"
+        class="max-w-80-screen max-h-80-screen object-cover pl-7"
+      />
+    </div>
+  </div>
+</div>

@@ -1,0 +1,52 @@
+<app-loading class="w-full h-screen absolute z-10" *ngIf="isLoading$ | async"></app-loading>
+<app-navbar
+  class="w-full flex justify-center border-b-2 border-color-yellow-500"
+></app-navbar>
+<div class="w-full h-full flex justify-center font-mono tracking-wide">
+  <div class="w-4/5 pt-2">
+    <app-breadcrumb
+      class="w-full"
+      [breadcrumbs]="['Inicio', 'Admin', 'Sitios Turísticos']"
+    ></app-breadcrumb>
+    <div class="w-full text-sm font-semibold text-color-blue-500 cursor-pointer pb-1" (click)="this.utils.navigateTo('/admin')">< Volver</div>
+    <div class="w-full text-xl">Mira todo lo que puedes visitar</div>
+    <div class="w-full text-sm">
+      ¡Descubre destinos inolvidables! Desde playas paradisíacas hasta ciudades
+      llenas de historia y cultura, vive experiencias únicas que te dejarán sin
+      aliento. ¡Tu próxima aventura comienza aquí!
+    </div>
+    <div class="w-full text-xl pt-5">
+      Explora los sitios naturales de Colombia
+    </div>
+    <div class="w-full pt-1 flex flex-wrap justify-start">
+      <div class="w-full flex">
+        <div class="w-1/2 text-lg flex items-center">
+          Estás en la página {{ actualPage }} de
+          {{ totalPages }}
+        </div>
+        <div class="w-1/2 flex justify-end">
+          <div class="p-2 text-xl font-bold cursor-pointer" (click)="previousPage()"><</div>
+          <div class="p-2 text-xl font-bold cursor-pointer" (click)="nextPage()">></div>
+        </div>
+      </div>
+      <div class="flex flex-wrap">
+        <div
+          class="w-100 card flex flex-col border rounded-lg"
+          *ngFor="let place of placesTourist"
+        >
+          <div class="text-sm" *ngIf="place.images.length > 0">
+            <img
+              [src]="place.images[0]"
+              alt="place.name"
+              class="w-full h-32 object-cover rounded-t-lg"
+            />
+          </div>
+          <div class="text-sm border-b text-center font-bold">{{ place.name }}</div>
+          <div class="text-sm p-8" *ngIf="textEllipsis">{{ place.description }}</div>
+          <div class="text-sm p-8" *ngIf="!textEllipsis">{{ place.description.substring(0, 100) }}...</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<app-footer class="w-full flex justify-center"></app-footer>

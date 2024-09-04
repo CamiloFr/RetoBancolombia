@@ -1,0 +1,6 @@
+<div class="w-full flex flex-wrap cursor-default pb-5 font-mono">
+  <div class="flex items-center" *ngFor="let bread of breadcrumbs; index as number">
+    <div class="text-color-blue-500 text-sm pr-2">{{ bread }}</div>
+    <p *ngIf="number < breadcrumbs.length - 1" class="text-sm pr-2">></p>
+  </div>
+</div>

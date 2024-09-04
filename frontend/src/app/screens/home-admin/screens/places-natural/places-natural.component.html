@@ -1,0 +1,54 @@
+<app-loading class="w-full h-screen absolute z-10" *ngIf="isLoading$ | async"></app-loading>
+<app-navbar class="w-full flex justify-center border-b-2 border-color-yellow-500"></app-navbar>
+<div class="w-full h-full flex justify-center font-mono tracking-wide">
+  <div class="w-4/5 pt-2">
+    <app-breadcrumb class="w-full" [breadcrumbs]="['Inicio', 'Admin', 'Sitios Naturales']"></app-breadcrumb>
+    <div class="w-full text-sm font-semibold text-color-blue-500 cursor-pointer pb-1" (click)="this.utils.navigateTo('/admin')">< Volver</div>
+    <div class="w-full text-xl">Estás conociendo sitios naturales</div>
+    <div class="w-full text-sm">
+      ¡Conéctate con la naturaleza en su máxima expresión! Descubre paisajes
+      impresionantes, desde montañas majestuosas hasta cascadas escondidas.
+      Relájate, explora y maravíllate con la belleza pura y salvaje que estos
+      sitios naturales tienen para ofrecer. ¡Tu próxima aventura te espera!
+    </div>
+    <div class="w-full text-xl pt-5" *ngIf="categorySelected === ''">
+      Selecciona la categoría que deseas explorar
+    </div>
+    <div class="w-full pt-5 flex flex-wrap justify-start" *ngIf="categorySelected === ''">
+      <div
+        class="w-100 card flex flex-col border rounded-lg"
+        *ngFor="let category of categoryNatualArea"
+        (click)="clickOnCategory(category.id)"
+      >
+        <div class="text-sm border-b text-center font-bold">{{ category.name }}</div>
+        <div class="text-sm p-8" *ngIf="this.textEllipsis">{{ category.description }}</div>
+        <div class="text-sm p-8" *ngIf="!this.textEllipsis">{{ category.description.substring(0, 100) }}...</div>
+      </div>
+    </div>
+    <div class="w-full text-xl pt-5" *ngIf="categorySelected !== ''">
+      Explora los sitios naturales de Colombia 
+    </div>
+    <div class="w-full pt-5 flex flex-wrap justify-start" *ngIf="categorySelected !== ''">
+      <div
+        class="w-100 card flex flex-col border rounded-lg"
+        *ngFor="let naturalArea of naturalAreasByCategory"
+      >
+        <div class="text-sm border-b text-center font-bold text-sm">{{ naturalArea.name }}</div>
+        <div class="text-sm pl-8 pr-8 pt-2">
+          <p class="font-bold text-sm">Departamento</p>
+          {{ naturalArea.department?.name }}
+        </div>
+        <div class="text-sm p-8">
+          <p class="font-bold text-sm">Descripción</p>
+          <p *ngIf="this.textEllipsis">
+            {{ naturalArea.department?.description }}
+          </p>
+          <p *ngIf="!this.textEllipsis">
+            {{ naturalArea.department?.description?.substring(0, 100) }}...
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<app-footer class="w-full flex justify-center"></app-footer>

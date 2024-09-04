@@ -1,0 +1,103 @@
+<app-loading
+  class="w-full h-screen absolute z-10"
+  *ngIf="isLoading$ | async"
+></app-loading>
+<div class="w-full h-screen flex justify-center items-center bg-white">
+  <div
+    class="w-4/5 h-3/4 flex justify-center items-center bg-white border rounded-xl drop-shadow-xl max-w-screen-xl"
+  >
+    <div class="flex w-full h-full border rounded-xl">
+      <div class="hidden lg:flex w-1/2 h-full">
+        <img
+          alt="explore-colombian-login"
+          class="w-full h-full rounded-tl-xl rounded-bl-xl shadow-lg"
+          src="./assets/explore-colombian-login-2.jpg"
+        />
+      </div>
+      <div
+        class="flex flex-col lg:flex-row w-full lg:w-1/2 h-full justify-center items-center shadow-lg"
+      >
+      <div class="flex w-4/5 lg:hidden">
+        <img
+          alt="explore-colombian-login"
+          class="w-full h-56"
+          src="./assets/explore-colombian-login-2.jpg"
+        />
+      </div>
+        <div
+          class="h-1/2 w-4/5 flex flex-col justify-around items-center border lg:rounded-xl p-5 shadow-lg"
+          *ngIf="!registerView"
+        >
+          <form [formGroup]="loginForm" (submit)="navigateToHomeAdmin()">
+            <input
+              class="w-full h-10 border rounded-xl p-2 text-color-blue-500 border-color-blue-500 mb-2.5"
+              type="text"
+              formControlName="email"
+              placeholder="Correo"
+            />
+            <span
+              *ngIf="
+                loginForm.get('email')?.hasError('required') &&
+                loginForm.get('email')?.touched
+              "
+              class="text-red-500 font-mono mb-2.5 mt-2.5 text-xs"
+              >El correo debe contener mínimo un caracter</span
+            >
+            <span
+              *ngIf="
+                loginForm.get('email')?.hasError('email') &&
+                loginForm.get('email')?.touched
+              "
+              class="text-red-500 font-mono mb-2.5 mt-2.5 text-xs"
+              >El correo debe ser válido</span
+            >
+            <input
+              class="w-full h-10 border rounded-xl p-2 text-color-blue-500 border-color-blue-500 mb-2.5"
+              type="password"
+              formControlName="password"
+              placeholder="Contraseña"
+            />
+            <span
+              *ngIf="
+                loginForm.get('password')?.hasError('required') &&
+                loginForm.get('email')?.touched
+              "
+              class="text-red-500 font-mono mb-2.5 mt-2.5 text-xs"
+              >La contraseña debe contener mínimo un caracter</span
+            >
+            <button
+              type="submit"
+              class="w-full text-sm border-2 bg-red-explore font-mono tracking-wide text-white text-center rounded-xl p-2 cursor-pointer lg:text-lg"
+            >
+              Ingresar
+            </button>
+          </form>
+          <div class="w-full h-10 flex justify-between items-center">
+            <div
+              class="w-1/2 text-sm text-color-blue-400 font-mono tracking-wide rounded-xl p-2 cursor-pointer lg:text-lg"
+            >
+              Olvidatre tu contraseña?
+            </div>
+            <div
+              class="w-1/2 text-sm text-color-blue-500 font-mono tracking-wide text-end rounded-xl p-2 cursor-pointer lg:text-lg"
+              (click)="this.registerView = true"
+            >
+              Registrarse
+            </div>
+          </div>
+          <div
+            (click)="this.utils.navigateTo('/')"
+            class="w-1/2 text-sm text-slate-950 font-mono tracking-wide text-center rounded-xl p-2 cursor-pointer lg:text-lg"
+          >
+            Volver al inicio
+          </div>
+        </div>
+        <app-register
+          class="h-2/3 w-4/5 flex flex-col justify-around items-center border rounded-xl p-5 shadow-lg"
+          *ngIf="registerView"
+          (registerView)="backToLogin()"
+        ></app-register>
+      </div>
+    </div>
+  </div>
+</div>

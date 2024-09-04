@@ -1,0 +1,39 @@
+<div class="w-full flex flex-row p-5">
+  <div class="w-1/2 flex flex-row">
+    <img src="./assets/icon.png" alt="icon" class="w-8 h-8 lg:w-12 lg:h-12" />
+    <img
+      src="./assets/letras.png"
+      alt="icon"
+      class="w-24 h-12 pl-2 lg:w-36 lg:h-16 lg:pl-7"
+    />
+  </div>
+  <div class="w-1/2 flex flex-wrap justify-end" *ngIf="userInfo.email === ''">
+    <div
+      (click)="this.utilsService.navigateTo('')"
+      class="text-sm font-mono p-2 tracking-wide text-color-blue-500 rounded-md cursor-pointer lg:p-5 lg:text-lg"
+    >
+      Inicio
+    </div>
+    <div
+      (click)="this.utilsService.navigateTo('/login')"
+      class="text-sm ml-4 border-2 p-2 border-color-button-primary font-mono tracking-wide border-slate-950 text-color-blue-500 rounded-md cursor-pointer lg:p-5 lg:text-lg"
+    >
+      Ingresar
+    </div>
+  </div>
+  <div class="w-1/2 flex flex-wrap justify-end" *ngIf="userInfo.email !== ''">
+    <div class="flex flex-row">
+      <div
+        class="font-mono tracking-wide text-color-blue-500 rounded-md p-5 cursor-default"
+      >
+        {{ userInfo.email }}
+      </div>
+      <div
+        (click)="logout()"
+        class="border-2 border-color-button-primary font-mono tracking-wide border-color-blue-500 text-color-blue-500 rounded-md p-5 cursor-pointer"
+      >
+        Cerrar sesión
+      </div>
+    </div>
+  </div>
+</div>
