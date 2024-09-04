@@ -26,6 +26,17 @@ El objetivo principal de esta aplicación web es proporcionar a turistas extranj
 #### Arquitectura de la aplicación
 Ver la imagen adjunta en la carpeta docs/SoluciónRetoBancolombia.jpg del repositorio.
 
+#### Control de versiones
+*Descripción*: Git es muy bueno para el control de versiones y uno de los mas usado.
+
+*Flujo de trabajo*: trunk based, fomentando el desarrollo en una rama prinicipal (trunk), excelente para integración continua y despliegues automaticos.
+
+*Versionado*: Tags en Git para marcar las versiones más importantes o que salgan de cara al cliente.
+
+*Integración Continua y Despliegue Continuo*: En este caso Azure DevOps nos nos permite automatizar los processos de construcción, pruebas y despliegue.
+
+*Documentación y registro de Cambios*: Mantener un archivo CHANGELOG.md en el repositorio el cual documentarias los cambios en cada versión.
+
 #### Backend
 *Tecnología*: AWS Lambda (Node.js).
 
